@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:the_meal_app/bloc/get_favorite_meals/get_favorite_meals_cubit.dart';
+import 'package:the_meal_app/bloc/get_favorite_meals_bloc/get_favorite_meals_bloc.dart';
 import 'package:the_meal_app/view/wiget/build_list_favorite.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -29,7 +29,7 @@ class _FavoritePageState extends State<FavoritePage> {
   }
 
   _getFavoriteMeals() {
-    context.read<GetFavoriteMealsCubit>().getFavoriteMeals();
+    context.read<GetFavoriteMealsBloc>().add(GetFavoriteMeals());
   }
 
   Widget _header() {
@@ -44,7 +44,7 @@ class _FavoritePageState extends State<FavoritePage> {
 
   Widget _body() {
     return Expanded(
-      child: BlocBuilder<GetFavoriteMealsCubit, GetFavoriteMealsState>(
+      child: BlocBuilder<GetFavoriteMealsBloc, GetFavoriteMealsState>(
         builder: (context, state) {
           if (state is GetFavoriteMealsLoaded) {
             return buildListFavorite(state.listMeals);

@@ -1,4 +1,4 @@
-part of 'get_favorite_meals_cubit.dart';
+part of 'get_favorite_meals_bloc.dart';
 
 abstract class GetFavoriteMealsState extends Equatable {
   const GetFavoriteMealsState();

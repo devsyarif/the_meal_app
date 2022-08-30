@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:the_meal_app/bloc/get_favorite_meals/get_favorite_meals_cubit.dart';
+import 'package:the_meal_app/bloc/get_favorite_meals_bloc/get_favorite_meals_bloc.dart';
 import 'package:the_meal_app/bloc/get_list_meals_bloc/get_list_meals_bloc.dart';
 import 'package:the_meal_app/view/ui/favorite_page.dart';
 import 'package:the_meal_app/view/wiget/build_list.dart';
@@ -56,7 +56,7 @@ class _SearchPageState extends State<SearchPage> {
                   MaterialPageRoute(
                     builder: (context) => MultiBlocProvider(
                       providers: [
-                        BlocProvider(create: (context) => GetFavoriteMealsCubit()),
+                        BlocProvider(create: (context) => GetFavoriteMealsBloc()),
                       ],
                       child: FavoritePage(),
                     ),
