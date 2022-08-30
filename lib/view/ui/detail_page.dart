@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_meal_app/bloc/check_is_favorite/check_is_favorite_cubit.dart';
+import 'package:the_meal_app/bloc/check_is_favorite_bloc/check_is_favorite_bloc.dart';
 import 'package:the_meal_app/bloc/get_detail_meals_bloc/get_detail_meals_bloc.dart';
 import 'package:the_meal_app/model/meals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +36,7 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   _checkIsFavorite(String id) {
-    context.read<CheckIsFavoriteCubit>().checkIsFavorite(id);
+    context.read<CheckIsFavoriteBloc>().add(Check(id: id));
   }
 
   Widget _body() {
@@ -136,7 +136,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     SizedBox(width: 12),
-                    BlocBuilder<CheckIsFavoriteCubit, CheckIsFavorite>(
+                    BlocBuilder<CheckIsFavoriteBloc, CheckIsFavorite>(
                       builder: (context, state) {
                         return GestureDetector(
                           onTap: () {

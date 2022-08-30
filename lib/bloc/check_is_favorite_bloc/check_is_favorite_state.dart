@@ -1,4 +1,4 @@
-part of 'check_is_favorite_cubit.dart';
+part of 'check_is_favorite_bloc.dart';
 
 class CheckIsFavorite extends Equatable {
   final TbMeal meals;

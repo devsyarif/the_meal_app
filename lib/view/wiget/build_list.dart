@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:the_meal_app/bloc/check_is_favorite/check_is_favorite_cubit.dart';
+import 'package:the_meal_app/bloc/check_is_favorite_bloc/check_is_favorite_bloc.dart';
 import 'package:the_meal_app/bloc/get_detail_meals_bloc/get_detail_meals_bloc.dart';
 import 'package:the_meal_app/model/meals.dart';
 import 'package:the_meal_app/view/ui/detail_page.dart';
@@ -23,7 +23,7 @@ Widget buildList(List<Meals> listMeals) {
               builder: (context) => MultiBlocProvider(
                 providers: [
                   BlocProvider(create: (context) => GetDetailMealsBloc()),
-                  BlocProvider(create: (context) => CheckIsFavoriteCubit()),
+                  BlocProvider(create: (context) => CheckIsFavoriteBloc()),
                 ],
                 child: DetailPage(idMeal: listMeals[index].idMeal),
               ),
