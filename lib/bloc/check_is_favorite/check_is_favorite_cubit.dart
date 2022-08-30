@@ -11,8 +11,6 @@ class CheckIsFavoriteCubit extends Cubit<CheckIsFavorite> {
   checkIsFavorite(String id) async {
     final result = await Repository().getFavoriteMeals();
     List<TbMeal> temp = result.where(((e) => e.idMeal == id)).toList();
-    print('id ${id}');
-    print('temp length ${temp.length}');
     emit(CheckIsFavorite(meals: temp.isEmpty ? null : temp.first));
   }
 }

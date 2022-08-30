@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_meal_app/bloc/get_favorite_meals/get_favorite_meals_cubit.dart';
-import 'package:the_meal_app/bloc/get_list_meals/get_list_meals_cubit.dart';
+import 'package:the_meal_app/bloc/get_list_meals_bloc/get_list_meals_bloc.dart';
 import 'package:the_meal_app/view/ui/favorite_page.dart';
 import 'package:the_meal_app/view/wiget/build_list.dart';
 
@@ -33,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _getMelas(String val) {
-    context.read<GetListMealsCubit>().getListMeals(val);
+    context.read<GetListMealsBloc>().add(GetListMeals(val: val));
   }
 
   Widget _search() {
@@ -92,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _body() {
     return Expanded(
-      child: BlocBuilder<GetListMealsCubit, GetListMealsState>(
+      child: BlocBuilder<GetListMealsBloc, GetListMealsState>(
         builder: (context, state) {
           if (state is GetListMealsLoaded) {
             return buildList(state.listMeals);
