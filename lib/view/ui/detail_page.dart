@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_meal_app/bloc/check_is_favorite/check_is_favorite_cubit.dart';
-import 'package:the_meal_app/bloc/get_detail_meals/get_detail_meals_cubit.dart';
+import 'package:the_meal_app/bloc/get_detail_meals_bloc/get_detail_meals_bloc.dart';
 import 'package:the_meal_app/model/meals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_meal_app/repository/moor_database.dart';
@@ -32,7 +32,7 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   _getDetailMelas(String id) {
-    context.read<GetDetailMealsCubit>().getDetailMeals(id);
+    context.read<GetDetailMealsBloc>().add(GetDetailMeals(id: id));
   }
 
   _checkIsFavorite(String id) {
@@ -40,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget _body() {
-    return BlocBuilder<GetDetailMealsCubit, GetDetailMealsState>(
+    return BlocBuilder<GetDetailMealsBloc, GetDetailMealsState>(
       builder: (context, state) {
         if (state is GetDetailMealsLoaded) {
           return Center(

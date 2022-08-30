@@ -1,4 +1,4 @@
-part of 'get_detail_meals_cubit.dart';
+part of 'get_detail_meals_bloc.dart';
 
 abstract class GetDetailMealsState extends Equatable {
   const GetDetailMealsState();

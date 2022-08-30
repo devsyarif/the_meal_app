@@ -10,12 +10,14 @@ part 'get_favorite_meals_state.dart';
 class GetFavoriteMealsBloc extends Bloc<GetFavoriteMealsEvent, GetFavoriteMealsState> {
   GetFavoriteMealsBloc() : super(GetFavoriteMealsInitial()) {
     on<GetFavoriteMealsEvent>((event, emit) async {
-      try {
-        emit(GetFavoriteMealsLoading());
-        final result = await Repository().getFavoriteMeals();
-        emit(GetFavoriteMealsLoaded(listMeals: result));
-      } catch (e) {
-        emit(GetFavoriteMealsError(error: e.toString()));
+      if (event is GetFavoriteMeals) {
+        try {
+          emit(GetFavoriteMealsLoading());
+          final result = await Repository().getFavoriteMeals();
+          emit(GetFavoriteMealsLoaded(listMeals: result));
+        } catch (e) {
+          emit(GetFavoriteMealsError(error: e.toString()));
+        }
       }
     });
   }
